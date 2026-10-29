@@ -1,0 +1,4 @@
+document.getElementById('menuToggle')?.addEventListener('click',e=>{const m=document.getElementById('navlinks'),open=m.classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',String(open))});
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
+const filters=document.querySelectorAll('[data-filter]');filters.forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.filter;filters.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.querySelectorAll('[data-category]').forEach(c=>c.hidden=v!=='all'&&c.dataset.category!==v)}));
+document.querySelectorAll('[data-amount]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-amount]').forEach(x=>x.classList.toggle('selected',x===b))}));
